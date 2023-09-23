@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import queue
+from collections import deque
 
 class Graph:
     def __init__(self, n):
@@ -41,18 +42,18 @@ class Graph:
 
             print("{} - {}".format(p, self.list[p]))
             for v in self.list[p]:
-                print("v: {}".format(v))
+                # print("v: {}".format(v))
                 if isVisited[v] == False:
                     # print("NÃO VISITADO AINDA!")
                     dist[v] = dist[p] + 1
-                    print("dist[{}] = dist[{}] + 1 = {}".format(v, p, dist[v]))
+                    # print("dist[{}] = dist[{}] + 1 = {}".format(v, p, dist[v]))
                     ant[v] = p
-                    print("ant[{}] = {}".format(v, p))
+                    # print("ant[{}] = {}".format(v, p))
                     Q.put(v) # adiciona os vértices adjacentes a p à fila
                     isVisited[v] = True
             print()
             
-        print("Visitados: {}".format(visited))
+        # print("Visitados: {}".format(visited))
         return dist, ant
     
     def bfs_search(self, v1, v2):
@@ -102,4 +103,47 @@ class Graph:
                         return visited
         print("Não há caminho entre os vértices")
         return None, None
+    
+    def __dfs_rec(self, v, isVisited, pai):
+        isVisited[v] = True
 
+        for u in self.list[v]:
+            if isVisited[u] == False:
+                pai[u] = v
+                self.__dfs_rec(u, isVisited, pai)
+
+    def dfs(self):
+        isVisited = [False for _ in range(self.num_vertices)]
+        pai = [-1 for _ in range(self.num_vertices)]
+
+        for v in range(self.num_vertices):
+            if isVisited[v] == False:
+                self.__dfs_rec(v, isVisited, pai)
+
+        return pai
+
+    def num_comp(self):
+        pai = self.dfs()
+        num = 0
+        for u in range(self.num_vertices):
+            if pai[u] == -1:
+                num += 1
+        return num
+    
+    def dfs_pilha(self):
+        isVisited = [False for _ in range(self.num_vertices)]
+        pai = [-1 for _ in range(self.num_vertices)]
+        pilha = deque()
+        for v in range(self.num_vertices):
+            if isVisited[v] == False:
+                pilha.append(v)
+                isVisited[v] = True
+                while pilha:
+                    p = pilha.pop()
+                    for u in self.list[p]:
+                        if isVisited[u] == False:
+                            pilha.append(u)
+                            isVisited[u] = True
+                            pai[u] = p
+                    # print("{} - {}".format(p, pilha))
+        return pai

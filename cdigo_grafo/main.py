@@ -28,4 +28,4 @@ def load_from(fileName):
 
 if __name__ == "__main__":
     print("Este arquivo não deve ser executado diretamente.")
-    print("Você pode rodar os testes a partir dos arquivos test.py.")
+    print("Você pode rodar os testes a partir dos arquivos 'testX.py'.")
