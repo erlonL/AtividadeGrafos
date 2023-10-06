@@ -1,15 +1,9 @@
 # Implementação da estrutura de <b>Grafos</b> em Python.
 
-[Atividade_Grafo](Atividade_Grafo.pdf)
-- [x] Leitura de arquivos e carregamento das estruturas do Grafo
-- [x] Busca em largura (BFS)
-    - [x] Método bfs_search(v1, v2) para imprimir o caminho entre dois vértices. Se não houver, indica que não há caminho.
-
-- [x] Busca em Profundidade (DFS)
-    - [x] Reimplementação do dfs_pilha() com auxílio de uma pilha para eliminar a recursão da implementação.
-
-
-[<h2>Testes</h2>](#testes) [testes-bfs_search](#bfs_search) | [teste-dfs_pilha](#dfs_pilha)
+## Índice
+- [testes-bfs_search](#bfs_search) 
+- [teste-dfs_pilha](#dfs_pilha)
+- [``/cdigo_grafo``](https://github.com/erlonL/AtividadeGrafos/tree/main/cdigo_grafo)
 
 ### bfs_search
 
@@ -18,7 +12,12 @@
 [teste 3 - pcv50 (bfs_test3.py)](/cdigo_grafo/bfs_test3.py)<br>
 [teste 4 - pcv177 (bfs_test4.py)](/cdigo_grafo/bfs_test4.py)<br>
 
+<details>
+    <summary>Imagem teste 1 / 2</summary>
 <img src="media/test1_2.png" alt="test1_test2">
+    
+</details>
+
 
 ```bash
 >> python3 bfs_test1.py
@@ -66,7 +65,11 @@ Caminho: [8, 7, 4, 2]
 [teste 1 - pcv4 (dfs_test1.py)](/cdigo_grafo/dfs_test1.py)<br>
 [teste 2 - pcv10 (dfs_test2.py)](/cdigo_grafo/dfs_test2.py)<br>
 
-<img src="media/dfs_pilha.png" alt="dfs_pilha">
+<details>
+    <summary>Imagem teste DFS (pilha)</summary>
+    <img src="media/dfs_pilha.png" alt="dfs_pilha">
+    
+</details>
     
 ```bash
 >> python3 dfs_test1.py
